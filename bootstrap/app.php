@@ -20,6 +20,12 @@ return Application::configure(basePath: dirname(__DIR__))
             '*',
         ]);
 
+        $middleware->validateCsrfTokens(except: [
+            'https://utmize.com.br/facebook/access-token',
+            'https://www.utmize.com.br/facebook/access-token',
+
+        ]);
+
         //
     })
     ->withExceptions(function (Exceptions $exceptions) {
