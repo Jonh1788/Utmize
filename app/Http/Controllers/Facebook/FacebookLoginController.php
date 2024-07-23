@@ -36,6 +36,8 @@ class FacebookLoginController extends Controller
                 'token' => $longToken
             ]);
         }
+
+        return response()->json(["error" => "Não foi possível obter o token de acesso."]);
     }
 
 }
