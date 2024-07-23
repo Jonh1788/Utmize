@@ -13,5 +13,11 @@ export default defineConfig({
         react(),
         
     ],
+
+    server: {
+        https: true, // Use HTTPS
+        host: 'utmize.com.br',
+        port: 443,
+      },
       
 });
