@@ -16,7 +16,7 @@ class FacebookService {
     
         
         $response = Http::get($link);
-        dd($response);
+    
         return $response;
     }
 
