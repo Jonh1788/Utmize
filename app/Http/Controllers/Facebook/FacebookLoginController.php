@@ -29,14 +29,12 @@ class FacebookLoginController extends Controller
             $getLongToken = $response->json();
             $userJson = $request->user;
            
-            $user = User::find($userJson['id']);
-            dd($user);  
+            $user = User::find($userJson['id']); 
             $longToken = $getLongToken['access_token'];
-
             $user->fb_access_token = $longToken;
             $user->save();
 
-            return response()->json(["token" => $longToken ]);
+            return response()->json(["token" => $longToken, "user" => $user]);
             return Inertia('Dashboard/Integracoes', [
                 'token' => $longToken
             ]);
