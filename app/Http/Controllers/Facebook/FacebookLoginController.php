@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
 use Facebook\Facebook;
 use App\Http\Services\FacebookService;
+use App\Models\User;
 
 class FacebookLoginController extends Controller
 {
@@ -26,9 +27,9 @@ class FacebookLoginController extends Controller
             $response = FacebookService::getLongToken($authResponse['accessToken']);
             
             $getLongToken = $response->json();
-            $user = $request->user();
-
-      
+            $userJson = $request->user();
+            $user = User::find($userJson['id']);
+            dd($user);  
             $longToken = $getLongToken['access_token'];
 
             $user->fb_access_token = $longToken;
