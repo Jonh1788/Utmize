@@ -13,7 +13,8 @@ function login(auth){
                     data: response,
                     user: auth.user
                 }).then(response => {
-                    console.log(response);
+                    console.log(response.data);
+                   
                 })
             })
             
