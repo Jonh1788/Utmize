@@ -22,7 +22,7 @@ class FacebookLoginController extends Controller
        $dados = $request->json()->all();
         if($dados['data']['status'] == 'connected'){
             $authResponse = $dados['data']['authResponse'];
-            dd($authResponse['accessToken']);
+           
             $response = FacebookService::getLongToken($authResponse['accessToken']);
             
             $getLongToken = $response->json();
