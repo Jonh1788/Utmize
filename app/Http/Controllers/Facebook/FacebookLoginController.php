@@ -26,9 +26,10 @@ class FacebookLoginController extends Controller
             $response = FacebookService::getLongToken($authResponse['accessToken']);
             
             $getLongToken = $response->json();
+            dd($getLongToken);
             $longToken = $getLongToken['access_token'];
 
-            $user = $request->user();
+            $user = $request->user();   
             $user->fb_access_token = $longToken;
             $user->save();
 
