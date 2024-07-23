@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\Facebook\FacebookLoginController;
 
-Route::get('/', function () {
+Route::get('/1', function () {
     return Inertia::render('Landing/Page', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
