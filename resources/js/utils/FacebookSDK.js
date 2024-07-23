@@ -7,7 +7,7 @@ export const initFacebookSDK = () => {
                 cookie: true,
                 xfbml: true,
                 status: true,
-                version: "v2.0",
+                version: "v20.0",
             });
 
             resolve();
