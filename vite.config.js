@@ -13,12 +13,5 @@ export default defineConfig({
         react(),
         
     ],
-    server: {
-        https: {
-            key: fs.readFileSync(path.resolve(__dirname, 'key.pem')),
-            cert: fs.readFileSync(path.resolve(__dirname, 'cert.pem')),
-        },
-    },
-    
-    
+      
 });
