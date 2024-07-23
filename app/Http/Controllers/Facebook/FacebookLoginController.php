@@ -24,6 +24,7 @@ class FacebookLoginController extends Controller
             $authResponse = $dados['data']['authResponse'];
 
             $response = FacebookService::getLongToken($authResponse['accessToken']);
+            dd($response);
             $getLongToken = $response->json();
             $longToken = $getLongToken['access_token'];
 
