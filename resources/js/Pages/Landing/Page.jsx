@@ -6,10 +6,58 @@ import { UtmizeLogo } from '@/Components/Svg/UtmizeLogo';
 import { IntegracoesFooter } from '@/Components/IntegracoesFooter';
 import { ThemeProvider } from '@/Components/ThemeContextProvider';
 import ToggleTheme from '@/Components/ToggleTheme';
+import { FeaturesSectionDemo } from '@/Components/SectionMarketing';
+import { ContainerScroll } from '@/Components/SectionScrollAnim';
+import { WavyBackground } from '@/Components/Waves';
+import { Tabs } from '@/Components/Products';
+
+
+
 
 
 export default function Page({auth}) {
-
+    const DummyContent = () => {
+        return (
+          <img
+            src="/dashboard.png"
+            alt="dummy image"
+            width="1000"
+            height="1000"
+            className="object-cover object-left-top h-[60%]  md:h-[90%] absolute -bottom-10 inset-x-0 w-[90%] rounded-xl mx-auto"
+          />
+        );
+      };
+    const tabs = [ {
+        title: "Product",
+        value: "product1",
+        content: (
+          <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-[#0DF205]/80 to-[#078C03]/80">
+            <p>Test Tab</p>
+            <DummyContent />
+          </div>
+        ),
+      },
+      {
+        title: "Teste",
+        value: "product2",
+        content: (
+          <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-[#0DF205]/80 to-[#078C03]/80">
+            <p>Teste 2 Tab</p>
+            <DummyContent />
+          </div>
+        ),
+      },
+      {
+        title: "Test2",
+        value: "product3",
+        content: (
+          <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-[#0DF205]/80 to-[#078C03]/80">
+            <p>Teste 3 Tab</p>
+            <DummyContent />
+          </div>
+        ),
+      }
+    ]
     const animate = { clipPath: ["polygon(0% 55%, 5% 25%, 20% 12%, 33% 14%, 46% 21%, 59% 37%, 67% 53%, 71% 65%, 79% 72%, 88% 65%, 95% 59%, 100% 67%, 100% 89%, 92% 96%, 76% 99%, 58% 99%, 44% 93%, 31% 83%, 13% 75%, 5% 64%)",
 "polygon(0% 41%, 4% 19%, 12% 13%, 20% 8%, 29% 6%, 39% 14%, 49% 24%, 61% 37%, 68% 38%, 75% 28%, 77% 20%, 80% 10%, 83% 4%, 90% 2%, 90% 22%, 84% 45%, 75% 54%, 59% 56%, 44% 58%, 16% 51%)",
 "polygon(0% 42%, 3% 52%, 11% 63%, 23% 71%, 35% 75%, 51% 75%, 58% 70%, 67% 58%, 70% 46%, 74% 34%, 75% 18%, 75% 6%, 62% 0%, 49% 2%, 40% 4%, 27% 5%, 18% 12%, 9% 14%, 6% 20%, 1% 32%)"], 
@@ -55,7 +103,7 @@ export default function Page({auth}) {
             <motion.div
               animate={animate}
                 transition={{ duration: 15, repeat: Infinity, repeatType: "reverse" }}
-              className='relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#0DF205] to-[#078C03] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]'
+              className='relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#0DF205]/80 to-[#078C03]/80 opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]'
             />
           </div>
                 <section className='h-screen w-screen pt-12 flex flex-col justify-between'>
@@ -81,42 +129,16 @@ export default function Page({auth}) {
                 </section>
 
                 <section className='h-screen w-screen bg-background flex items-center justify-center'>
-                    <div className='w-full h-full flex flex-col'>
-                            <div className=' w-full h-full flex items-center justify-center'>
-                                    <div className='border-2 bg-zinc-950 shadow-inner border-border/50 text-wrap w-80 h-40 flex items-center justify-center text-center rounded-lg'>
-                                        <h1>Tecnologia de ponta em rastreamento de dados</h1>
-                                    </div>
-                            </div>
+                    <FeaturesSectionDemo />
+                </section>
 
-                            <div className=' w-full h-full flex items-center justify-center'>
-                                    <div className='border-2 bg-zinc-950 shadow-inner border-border/50 text-wrap w-80 h-40 flex items-center justify-center text-center rounded-lg'>
-                                        <h1>Tecnologia de ponta em rastreamento de dados</h1>
-                                    </div>
-                            </div>
-                    </div>
+                <section className='h-screen w-screen bg-background relative flex flex-col items-center justify-center'>
+                    <WavyBackground waveWidth={100} />
+                    
+                </section>
 
-                    <div className='bg-red-800 w-full h-full'>
-
-
-                    </div>
-
-                    <div className='w-full h-full flex flex-col'>
-
-                        <div className='w-full h-full flex flex-col items-center justify-center'>
-                                <div className=' w-full h-full flex items-center justify-center'>
-                                        <div className='border-2 bg-zinc-950 shadow-inner border-border/50 text-wrap w-80 h-40 flex items-center justify-center text-center rounded-lg'>
-                                            <h1>Tecnologia de ponta em rastreamento de dados</h1>
-                                        </div>
-                                </div>
-
-                                <div className=' w-full h-full flex items-center justify-center'>
-                                        <div className='border-2 bg-zinc-950 shadow-inner border-border/50 text-wrap w-80 h-40 flex items-center justify-center text-center rounded-lg'>
-                                            <h1>Tecnologia de ponta em rastreamento de dados</h1>
-                                        </div>
-                                </div>
-
-                        </div>
-                    </div>
+                <section className='h-screen w-screen font-title [perspective:1000px] bg-background relative flex-col flex px-12 mb-14'>
+                    <Tabs propTabs={tabs}/>
                 </section>
             </main>
         </ThemeProvider>
