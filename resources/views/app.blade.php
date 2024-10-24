@@ -17,7 +17,7 @@
         @inertiaHead
     </head>
     <body class="font-sans antialiased">
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#version=v19.0&appId=3695293237458988&xfbml=true"></script>
+
 
         @inertia
     </body>

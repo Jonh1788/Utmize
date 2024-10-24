@@ -14,14 +14,10 @@ export default defineConfig({
         
     ],
 
-<<<<<<< HEAD
-   
-=======
     server: {
         https: true, // Use HTTPS
         host: 'utmize.com.br',
         port: 443,
       },
-      
->>>>>>> 6ab3461fc732fb3d765ed8f75fec03dd9cf85b5d
+
 });

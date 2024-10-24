@@ -5,6 +5,8 @@ import { Button } from '@/Components/ui/button';
 
 
 export default function Dashboard({ auth }) {
+    const referralLink = `https://utmize.com.br/register?ref=${auth.user.referral_code}`;
+
      return (
         <AuthenticatedLayout
             user={auth.user}           
@@ -21,7 +23,7 @@ export default function Dashboard({ auth }) {
 
                             <div className='p-6'>
                                 <p className='text-muted-foreground text-sm pb-6'>Link de indicação</p>
-                                <input type="text" className='bg-card border border-border rounded-md w-full focus:ring-ring focus:border-ring' readOnly value={"https://localhost/?code=QOQGZKN4FQ"} />
+                                <input type="text" className='bg-card border border-border rounded-md w-full focus:ring-ring focus:border-ring' readOnly value={referralLink} />
                             </div>
                         </div>
 

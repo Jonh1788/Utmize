@@ -1,6 +1,6 @@
-import { Button } from "./ui/button"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "./ui/table"
-export const CampanhasContent = ({children}) => {
+import { Button } from "./ui/button";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "./ui/table";
+export const CampanhasContent = ({children, campaignsData = []}) => {
     return (
         <div className='bg-card w-full'>
                 <div className='flex w-full justify-end items-center border-b border-border py-4'>
@@ -43,47 +43,36 @@ export const CampanhasContent = ({children}) => {
                         <Table className="text-card-foreground border-collapse" overflow={"no-scrollbar"}>
                             <TableHeader className="text-center rounded-t-md">
                                 <TableRow className="">
-                                    <TableHead className="text-center border-r border-collapse">Status</TableHead>
-                                    <TableHead className="text-center border-r border-collapse">Campanha</TableHead>
-                                    <TableHead className="text-center border-r border-collapse">Orçamento</TableHead>
-                                    <TableHead className="text-center border-r border-collapse">Vendas</TableHead>
-                                    <TableHead className="text-center border-r border-collapse">CPA</TableHead>
-                                    <TableHead className="text-center border-r border-collapse">Gastos</TableHead>
-                                    <TableHead className="text-center border-r border-collapse">Faturamento</TableHead>
-                                    <TableHead className="text-center border-r border-collapse">Lucro</TableHead>
-                                    <TableHead className="text-center border-r border-collapse">Roas</TableHead>
-                                    <TableHead className="text-center border-r border-collapse">Margem</TableHead>
-                                    <TableHead className="text-center border-r border-collapse">ROI</TableHead>
-                                    <TableHead className="text-center border-r border-collapse">IC</TableHead>
-                                    <TableHead className="text-center border-r border-collapse">CPI</TableHead>
-                                    <TableHead className="text-center border-r border-collapse">CPC</TableHead>
-                                    <TableHead className="text-center border-r border-collapse">CTR</TableHead>
-                                    <TableHead className="text-center border-r border-collapse">CPM</TableHead>
-                                    <TableHead className="text-center border-r border-collapse">Impressões</TableHead>
-                                    <TableHead className="text-center">Cliques</TableHead>
+                                        {/* Cabeçalhos das colunas */}
+                                <TableHead className="text-center border-r border-collapse">Status</TableHead>
+                                <TableHead className="text-center border-r border-collapse">Campanha</TableHead>
+                                <TableHead className="text-center border-r border-collapse">Orçamento</TableHead>
+                                <TableHead className="text-center border-r border-collapse">Vendas</TableHead>
+                                <TableHead className="text-center border-r border-collapse">CPA</TableHead>
+                                <TableHead className="text-center border-r border-collapse">Gastos</TableHead>
+                                <TableHead className="text-center border-r border-collapse">Faturamento</TableHead>
+                                <TableHead className="text-center border-r border-collapse">Lucro</TableHead>
+                                <TableHead className="text-center border-r border-collapse">ROAS</TableHead>
+                                <TableHead className="text-center border-r border-collapse">Margem</TableHead>
+                                {/* ... outros cabeçalhos */}
                                 </TableRow>
                             </TableHeader>
                             <TableBody className="shadow-md  ">
-                                <TableRow className="">
-                                    <TableCell className="text-center border-r">N/A</TableCell>
-                                    <TableCell className="text-center border-r">N/A</TableCell>
-                                    <TableCell className="text-center border-r">N/A</TableCell>
-                                    <TableCell className="text-center border-r">N/A</TableCell>
-                                    <TableCell className="text-center border-r">N/A</TableCell>
-                                    <TableCell className="text-center border-r">N/A</TableCell>
-                                    <TableCell className="text-center border-r">N/A</TableCell>
-                                    <TableCell className="text-center border-r">N/A</TableCell>
-                                    <TableCell className="text-center border-r">N/A</TableCell>
-                                    <TableCell className="text-center border-r">N/A</TableCell>
-                                    <TableCell className="text-center border-r">N/A</TableCell>
-                                    <TableCell className="text-center border-r">N/A</TableCell>
-                                    <TableCell className="text-center border-r">N/A</TableCell>
-                                    <TableCell className="text-center border-r">N/A</TableCell>
-                                    <TableCell className="text-center border-r">N/A</TableCell>
-                                    <TableCell className="text-center border-r">N/A</TableCell>
-                                    <TableCell className="text-center border-r">N/A</TableCell>
-                                    <TableCell className="text-center ">N/A</TableCell>
-                                </TableRow>   
+                                {campaignsData.map((campaign) => (
+                                    <TableRow key={campaign.id}>
+                                        <TableCell className="text-center border-r">{campaign.status}</TableCell>
+                                        <TableCell className="text-center border-r">{campaign.name}</TableCell>
+                                        <TableCell className="text-center border-r">R$ {campaign.daily_budget.toFixed(2)}</TableCell>
+                                        <TableCell className="text-center border-r">{campaign.purchases}</TableCell>
+                                        <TableCell className="text-center border-r">R$ {campaign.cpa.toFixed(2)}</TableCell>
+                                        <TableCell className="text-center border-r">R$ {campaign.spend.toFixed(2)}</TableCell>
+                                        <TableCell className="text-center border-r">R$ {campaign.revenue.toFixed(2)}</TableCell>
+                                        <TableCell className="text-center border-r">R$ {campaign.profit.toFixed(2)}</TableCell>
+                                        <TableCell className="text-center border-r">{campaign.roas}</TableCell>
+                                        <TableCell className="text-center border-r">{campaign.profitMargin}%</TableCell>
+                                        {/* ... outras células */}
+                                    </TableRow>
+                                ))}  
                             </TableBody>
                         </Table>
                     </div>

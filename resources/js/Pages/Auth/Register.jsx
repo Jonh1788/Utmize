@@ -98,7 +98,19 @@ export default function Register() {
 
                     <InputError message={errors.password_confirmation} className="mt-2" />
                 </div>
+                <div className="mt-4">
+                    <InputLabel htmlFor="referral_code" value="Código de Indicação" />
 
+                    <TextInput
+                        id="referral_code"
+                        name="referral_code"
+                        value={data.referral_code}
+                        className="mt-1 block w-full"
+                        onChange={(e) => setData('referral_code', e.target.value)}
+                    />
+
+                    <InputError message={errors.referral_code} className="mt-2" />
+                </div>
                 <div className="flex items-center justify-end mt-4">
                     <Link
                         href={route('login')}

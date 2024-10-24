@@ -93,7 +93,7 @@ export default function Authenticated({ user, header, children }) {
                             </div>
                         </div>
  
-                        <div className="hidden lg:flex w-full lg:items-center">
+                        <div className="hidden md:flex w-full md:items-center">
                             <div className="ms-3 relative mb-4">
                                 <Dropdown>
                                     <Dropdown.Trigger>
@@ -130,7 +130,7 @@ export default function Authenticated({ user, header, children }) {
                             </div>
                         </div>
 
-                        <div className="-me-2 flex items-center sm:hidden">
+                        <div className="-me-2 flex items-center md:hidden">
                             <ToggleTheme></ToggleTheme>
                             <button
                                 onClick={() => setShowingNavigationDropdown((previousState) => !previousState)}
@@ -174,7 +174,6 @@ export default function Authenticated({ user, header, children }) {
                         </div>
 
                         <div className="mt-3 space-y-1">
-                            <ResponsiveNavLink href={route('profile.edit')}>Profile</ResponsiveNavLink>
                             <ResponsiveNavLink method="post" href={route('logout')} as="button">
                                 Log Out
                             </ResponsiveNavLink>

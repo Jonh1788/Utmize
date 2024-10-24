@@ -6,6 +6,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\Rule;
+use App\Models\Integration;
 
 class User extends Authenticatable
 {
@@ -44,4 +46,37 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($user) {
+            $user->referral_code = self::generateReferralCode();
+        });
+    }
+
+    public function rules()
+    {
+        return $this->hasMany(Rule::class);
+    }
+
+    private static function generateReferralCode()
+    {
+        do {
+            $code = strtoupper(bin2hex(random_bytes(5)));
+        } while (self::where('referral_code', $code)->exists());
+
+        return $code;
+    }
+
+    public function sales()
+{
+    return $this->hasMany(Sale::class);
+}
+
+ public function integrations(){
+    return $this->hasMany(Integration::class);
+ }
 }

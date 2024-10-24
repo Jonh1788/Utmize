@@ -10,7 +10,11 @@ use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\Dashboard\GraphController;
+use App\Http\Controllers\Facebook\FacebookLoginController;
+use App\Http\Controllers\RulesController;
+
 use Illuminate\Support\Facades\Route;
+
 
 Route::middleware('guest')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])
@@ -59,26 +63,20 @@ Route::middleware('auth')->group(function () {
                 ->name('logout');
 
     Route::get('utms', [GraphController::class, 'create'])->name('utms');
+    // Campanhas
+    Route::get('campanhas', [FacebookLoginController::class, 'campanhas'])->name('campanhas');
 
-    Route::get('campanhas', function () {
-        return \Inertia\Inertia::render('Dashboard/Campanhas');
-    })->name('campanhas');
+    // Contas de anúncio
+    Route::get('campanhas/contas', [FacebookLoginController::class, 'contas'])->name('campanhas.contas');
 
-    Route::get('campanhas/contas', function (){
-        return \Inertia\Inertia::render('Dashboard/Campanhas/Contas');
-    })->name('campanhas.contas');
+    // Anúncios
+    Route::get('campanhas/anuncios', [FacebookLoginController::class, 'anuncios'])->name('campanhas.anuncios');
 
-    Route::get('campanhas/anuncios', function (){
-        return \Inertia\Inertia::render('Dashboard/Campanhas/Anuncios');
-    })->name('campanhas.anuncios');
-    
-    Route::get('camapanhas/campanhas', function (){
-        return \Inertia\Inertia::render('Dashboard/Campanhas/Sets');
-    })->name('campanhas.campanhas');
-    
-    Route::get('camapanhas/conjuntos', function (){
-        return \Inertia\Inertia::render('Dashboard/Campanhas/Conjuntos');
-    })->name('campanhas.conjuntos');
+    // Conjuntos de anúncios
+    Route::get('campanhas/conjuntos', [FacebookLoginController::class, 'conjuntos'])->name('campanhas.conjuntos');
+
+    // Ajuste da rota para 'campanhas/campanhas' (se necessário)
+    Route::get('campanhas/campanhas', [FacebookLoginController::class, 'campanhasList'])->name('campanhas.campanhas');
 
     Route::get('integracoes', function () {
         return \Inertia\Inertia::render('Dashboard/Integracoes');
@@ -88,9 +86,12 @@ Route::middleware('auth')->group(function () {
         return \Inertia\Inertia::render('Taxas/Taxas');
     })->name('taxas');
 
-    Route::get('regras', function () {
-        return \Inertia\Inertia::render('Regras/Regras');
-    })->name('regras');
+    Route::get('/regras', [RulesController::class, 'index'])->name('regras');
+    Route::post('/rules', [RulesController::class, 'store'])->name('rules.store');
+    Route::delete('/rules/{id}', [RulesController::class, 'destroy'])->name('rules.destroy');
+    
+    Route::post('/rules/{id}/pause', [RulesController::class, 'pause'])->name('rules.pause');
+    Route::post('/rules/{id}/activate', [RulesController::class, 'activate'])->name('rules.activate');
 
     Route::get('assinatura', function () {
         return \Inertia\Inertia::render('Assinatura/Assinatura');
